@@ -54,6 +54,17 @@ The List Of Commands It Supports :-
                             python_install        --> Installs Python In Victim Pc Without UI
 
 
+```
+
+
+# Features Of Our Framework :-
+Check The Video To Get A Detail Knowledge
+```
+1. The Payload.py is a FULLY UNDETECTABLE(FUD) use your own techniques for making an exe file. (Best Result When Backdoored With Some Other Legitimate Applictions)
+2. Able to perform privilege escalation on any windows systems.
+3. Fud keylogger
+4. 2 ways of achieving persistance 
+5. Recon automation to save your time.
 
 ```
 
@@ -68,11 +79,13 @@ pip3 install -r requirements.txt
 python3 c2c.py
 
 ```
+
 It is worth mentioning that [Suman Chakraborty](https://github.com/ANON4MOUS)
 have contributed in the framework by coding the the the Fud Keyloger, Wifi Password Extraction and Chrome Password Dumper modules. 
 
+
+https://user-images.githubusercontent.com/66937297/175561451-9c6cbd0f-8695-4b26-9621-c988cf96f551.mp4
+
+
 ## Dont Forget To Change The IP ADDRESS Manually in both c2c.py and payload.py
-
-
-
 
