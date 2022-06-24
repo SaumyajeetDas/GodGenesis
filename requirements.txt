@@ -1,0 +1,8 @@
+readline
+colorama
+fernet
+pynput
+sqlite3
+win32crypt
+pycrypto
+cryptographu
