@@ -1,7 +1,7 @@
 # Welcome To God Genesis
 
 God Genesis is a C2 server purely coded in Python3 created to help Red Teamers and Penetration Testers. 
-Currently It only supports TCP reverse shell but wait a min, its a FUD.
+Currently It only supports TCP reverse shell but wait a min, its a FUD and can give u admin shell from any targeted WINDOWS Machine.
 
 The List Of Commands It Supports :-
 
@@ -55,3 +55,21 @@ The List Of Commands It Supports :-
 
 
 ```
+
+
+How To Use Our Tool : 
+
+```
+git clone https://github.com/SaumyajeetDas/GodGenesis.git
+
+pip3 install -r requirements.txt
+
+python3 c2c.py
+
+```
+
+## Dont Forget To Change The IP ADDRESS Manually in both c2c.py and payload.py
+
+
+
+
