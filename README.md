@@ -68,6 +68,8 @@ pip3 install -r requirements.txt
 python3 c2c.py
 
 ```
+It is worth mentioning that [Suman Chakraborty](https://github.com/ANON4MOUS)
+have contributed in the framework by coding the the the Fud Keyloger, Wifi Password Extraction and Chrome Password Dumper modules. 
 
 ## Dont Forget To Change The IP ADDRESS Manually in both c2c.py and payload.py
 
