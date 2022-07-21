@@ -3,6 +3,6 @@ colorama
 fernet
 pynput
 sqlite3
-win32crypt
+pywin32
 pycrypto
 cryptographu
