@@ -296,5 +296,5 @@ elif args.mode == "listen":
         else:
             print(f"Command Not Found: {command}")
 
-elif args.ip == None or args.port == None:
-    print("God Genesis C2: Specify IP/PORT")
+else:
+    print("c2c.py: use '-h/--help' to show help message")
