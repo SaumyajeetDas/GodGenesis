@@ -7,7 +7,7 @@ def main_help():
     basic_commands_table.add_column("Command", style="dim", width=12)
     basic_commands_table.add_column("Description")
     basic_commands_table.add_row("help", "Show this menu")
-    basic_commands_table.add_row("exit", "Shell works in background and prompted to C2 server")
+    basic_commands_table.add_row("exit", "Exit to C2 server prompt (Shell works in background)")
     basic_commands_table.add_row("clear", "Clear the previous outputs")
     basic_commands_table.add_row("terminate", "Exit the shell completely")
 
