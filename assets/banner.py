@@ -1,4 +1,4 @@
-from colorama import Fore
+from colorama import Fore, Style
 
 
 def banner():
@@ -38,5 +38,6 @@ def banner():
 ╚██████╔╝╚█████╔╝██████╔╝    ╚██████╔╝███████╗██║░╚███║███████╗██████╔╝██║██████╔╝
 ░╚═════╝░░╚════╝░╚═════╝░    ░╚═════╝░╚══════╝╚═╝░░╚══╝╚══════╝╚═════╝░╚═╝╚═════╝░
 
-                                          -- Fʀᴏᴍ Tʜᴇ Hᴏᴜsᴇ Oғ IEM(BCA) Mᴀᴅᴇ Bʏ Tᴇᴀᴍ BCAN 420 '''
+                                          -- Fʀᴏᴍ Tʜᴇ Hᴏᴜsᴇ Oғ IEM(BCA) Mᴀᴅᴇ Bʏ Tᴇᴀᴍ BCAN 420
+  ''' + Style.RESET_ALL
     return banner_text
