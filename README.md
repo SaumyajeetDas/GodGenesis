@@ -73,7 +73,6 @@ git clone https://github.com/SaumyajeetDas/GodGenesis.git
 ```
 pip3 install -r requirements.txt
 ```
-> The readline and rich modules will be enough to run c2c.py
 
 # How To Use Our Tool: 
 ## Build the payload
