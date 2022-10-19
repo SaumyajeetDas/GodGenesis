@@ -66,6 +66,11 @@ Currently It only supports TCP reverse shell but wait a min, its a FUD and can g
 
 
 # How To Use Our Tool: 
+## Building the payload
+```
+python3 c2c.py build --ip <ip> --port <port> -output <output_filename>
+```
+> This will generate a payload with the name specified in the --output option, the payload will have a .py extension
 
 ```
 git clone https://github.com/SaumyajeetDas/GodGenesis.git
