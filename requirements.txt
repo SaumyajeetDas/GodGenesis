@@ -1,3 +1,4 @@
+rich
 readline
 colorama
 fernet
