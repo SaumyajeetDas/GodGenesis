@@ -4,5 +4,7 @@ fernet
 pynput
 sqlite3
 pywin32
-pycrypto
+pycryptodome
 cryptography
+datetime
+
