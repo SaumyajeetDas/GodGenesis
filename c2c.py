@@ -38,8 +38,8 @@ def server():
             targets.append(target)
             ips.append(ip)
             print(str(ip) + " Has Connected To GOD GENESIS." )
-        except:
-            pass
+        except Exception as e:
+            print("An error occurred:", e)
 
 
 def shell(target, ip):
