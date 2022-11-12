@@ -8,7 +8,7 @@ import threading
 import subprocess
 from assets.banner import banner
 from assets.payload_builder import build_payload
-from assets.helper import main_help, shell_help, session_help
+from assets.helper import main_help, session_help
 
 
 
