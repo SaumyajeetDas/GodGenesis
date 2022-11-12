@@ -209,7 +209,7 @@ if __name__ == "__main__":
                     print(f'Failed: {e}')
                 
             elif command == 'shell_help':
-                shell_help()
+                main_help()
             elif command == 'help':
                 session_help()
             else:
