@@ -204,7 +204,7 @@ if __name__ == "__main__":
         build_payload(args)
     elif args.mode == "listen":
         root = tk.Tk()
-        root.title('Treeview demo')
+        root.title('GodGenesis C2')
         root.geometry('820x600')
         
         var = tk.IntVar()
