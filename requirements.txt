@@ -1,5 +1,4 @@
 rich
-readline
 colorama
 fernet
 pynput
