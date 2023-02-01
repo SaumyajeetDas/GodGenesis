@@ -1,10 +1,8 @@
-readline
+rich
 colorama
 fernet
 pynput
 sqlite3
 pywin32
-pycryptodome
+pycrypto
 cryptography
-datetime
-
