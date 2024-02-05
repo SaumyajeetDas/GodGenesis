@@ -80,7 +80,7 @@ python3 c2c.py
 
 ```
 
-It is worth mentioning that [Suman Chakraborty](https://github.com/ANON4MOUS)
+It is worth mentioning that [Suman Kumar Chakraborty](https://github.com/Hijack-Everything/)
 have contributed in the framework by coding the the the Fud Keyloger, Wifi Password Extraction and Chrome Password Dumper modules. 
 
 
